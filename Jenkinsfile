@@ -5,7 +5,7 @@ pipeline{
     Version = '1.7'
   }
   parameters{
-    choice(name: 'Deployment', choices: ['dev','staging','Production'] )
+    choice(name: 'Deployment', choices: ['dev','staging','Production'],description:"Choosing env")
   }
   stages{
     stage('check_out'){
