@@ -36,8 +36,8 @@ pipeline{
         aws configure set region ap-southeast-2
 
         aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 448398088949.dkr.ecr.ap-southeast-2.amazonaws.com
-        docker tag python-app:latest 448398088949.dkr.ecr.ap-southeast-2.amazonaws.com/python-app:latest
-        docker push 448398088949.dkr.ecr.ap-southeast-2.amazonaws.com/python-app:latest
+        docker tag python-app:latest 448398088949.dkr.ecr.ap-southeast-2.amazonaws.com/python-app:${BUILD_NUMBER}
+        docker push 448398088949.dkr.ecr.ap-southeast-2.amazonaws.com/python-app:${BUILD_NUMBER}
 
       '''
         }
