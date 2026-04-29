@@ -25,7 +25,6 @@ pipeline{
     stage('docker_test'){
       steps{
         sh 'docker --version'
-        sh 'docker ps-a'
         sh 'docker images'
       }
     }
