@@ -16,6 +16,7 @@ pipeline{
           string(credentialsId:'aws-access-key' , variable:'AWS_ACCESS_KEY') , 
           string(credentialsId:'aws-secret-key' , variable:'AWS_SECRET_KEY')
           ])
+        {
       sh '''
         aws configure set aws_access_key_id $AWS__ACCESS_KEY
         aws configure set aws_secret_access_key $AWS_SECRET_KEY
@@ -26,6 +27,7 @@ pipeline{
         docker push 448398088949.dkr.ecr.ap-southeast-2.amazonaws.com/python-app:latest
 
       '''
+        }
   }
     }
   }
