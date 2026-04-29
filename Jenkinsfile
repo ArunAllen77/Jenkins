@@ -22,6 +22,13 @@ pipeline{
       '''
       }
     }
+    stage('docker_test'){
+      steps{
+        sh 'docker --version'
+        sh 'docker ps-a'
+        sh 'docker images'
+      }
+    }
     stage('parameters'){
       steps{
         echo "Deployed on ${params.Deployment}"
