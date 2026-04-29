@@ -13,7 +13,7 @@ pipeline{
     stage('ECR_PUSH'){
       steps{
         withCredentials([
-          string(credentialsId:'aws-access-key' , variable:'AWS_ACCESS_KEY')
+          string(credentialsId:'aws-access-key' , variable:'AWS_ACCESS_KEY') , 
           string(credentialsId:'aws-secret-key' , variable:'AWS_SECRET_KEY')
           ])
       sh '''
@@ -33,5 +33,8 @@ pipeline{
     success{
       echo "Pipeline passed with ${IMAGE_NAME}: ${BUILD_NUMBER}"
     }
-}
+    failure{
+      echo "Pipeline Failed"
+}}
+  
 }
