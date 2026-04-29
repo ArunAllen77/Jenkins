@@ -10,6 +10,19 @@ pipeline{
       sh 'docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} . '
     }
     }
+    stage('Debug Credentials') {
+    steps {
+        withCredentials([
+            string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY'),
+            string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_KEY')
+        ]) {
+            sh '''
+                echo "Access key length: ${#AWS_ACCESS_KEY}"
+                echo "Secret key length: ${#AWS_SECRET_KEY}"
+            '''
+        }
+    }
+}
     stage('ECR_PUSH'){
       steps{
         withCredentials([
