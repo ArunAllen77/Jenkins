@@ -3,8 +3,8 @@ pipeline{
   stages{
     stage('checkout'){
       steps{
-        echo "Branch: ${BRANCH_NAME}
-        echo "Jobname: ${JOB_NAME}
+        echo "Branch: ${BRANCH_NAME} "
+        echo "Jobname: ${JOB_NAME} "
       }
     }
     stage('Sonarqube Analysis'){
