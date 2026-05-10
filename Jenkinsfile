@@ -11,18 +11,21 @@ pipeline{
         echo "Jobname: ${JOB_NAME} "
       }
     }
-    stage('Sonarqube Analysis'){
-      steps{
-        withSonarQubeEnv('Sonarqube'){
-          sh '''
-          sonar-scanner \
-          -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=http://sonarqube:9000
-          '''
+    stage('Sonarqube Analysis') {
+    steps {
+        withSonarQubeEnv('Sonarqube') {
+            script {
+                def scannerHome = tool 'SonarScanner'
+                sh """
+                    ${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=Python-App \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://sonarqube:9000
+                """
+            }
         }
-      }
     }
+}
     stage('Quality Gates'){
       steps{
         timeout(time:2,unit: 'MINUTES'){
