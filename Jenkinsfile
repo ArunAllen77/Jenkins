@@ -1,12 +1,13 @@
 pipeline{
   agent any
   environment{
-    SONAR_PROJECT_KEY='Python-App'
+    SONAR_PROJECT_KEY = 'Python-App'
   }
   stages{
+    
     stage('checkout'){
       steps{
-        echo "Branch: ${BRANCH_NAME} "
+          echo "Branch: ${env.BRANCH_NAME} "
         echo "Jobname: ${JOB_NAME} "
       }
     }
