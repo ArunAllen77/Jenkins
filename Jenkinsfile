@@ -1,5 +1,8 @@
 pipeline{
   agent any
+  environment{
+    SONAR_PROJECT_KEY='Python-App'
+  }
   stages{
     stage('checkout'){
       steps{
